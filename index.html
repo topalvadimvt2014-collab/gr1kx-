@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Київський час</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #clock {
+            font-size: 80px;
+            font-weight: bold;
+            border: 3px solid white;
+            padding: 20px 40px;
+            border-radius: 15px;
+        }
+
+        #date {
+            margin-top: 20px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🇺🇦 Київський час</h1>
+
+    <div id="clock">00:00:00</div>
+    <div id="date">01.01.2025</div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            const time = now.toLocaleTimeString("uk-UA", {
+                timeZone: "Europe/Kyiv",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+
+            const date = now.toLocaleDateString("uk-UA", {
+                timeZone: "Europe/Kyiv",
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            });
+
+            document.getElementById("clock").textContent = time;
+            document.getElementById("date").textContent = date;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+</html>
